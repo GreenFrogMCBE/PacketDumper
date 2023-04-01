@@ -19,6 +19,7 @@ relay.listen();
 relay.on('connect', player => {
   player.on('clientbound', ({ name, params }) => {
     if (name === 'move_entity' || name === 'set_entity_data' || name === 'level_event') return;
+
     const packet = {
       name,
       params,
