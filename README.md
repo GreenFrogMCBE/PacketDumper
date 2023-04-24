@@ -4,4 +4,4 @@ Dumps packets from the server
 
 # Usage
 
-Example usage: ```node dumper.js [version] [host] [port] [targetserver] [targetport]```
+Example usage: ```node index.js [version] [host] [port] [target server host] [target server port]```
