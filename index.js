@@ -1,4 +1,4 @@
-const { Relay } = require('bedrock-protocol');
+const { Relay } = require('frog-protocol');
 const fs = require('fs');
 const path = require('path');
 

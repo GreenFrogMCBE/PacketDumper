@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "frog-protocol": "git+https://github.com/greenfrogmc/Protocol.git"
+  }
+}
