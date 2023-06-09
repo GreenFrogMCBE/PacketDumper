@@ -1,6 +1,6 @@
 # Packet Dumper
 
-Dumps packets from the server
+Dumps packets from any server
 
 # Usage
 
