@@ -4,6 +4,8 @@ const path = require('path');
 
 const args = process.argv.slice(2);
 
+fs.mkdirSync("packets", { recursive: true })
+
 const relay = new Relay({
   version: args[0],
   host: args[1],
@@ -18,20 +20,22 @@ relay.listen();
 
 relay.on('connect', player => {
   player.on('clientbound', ({ name, params }) => {
-    if (name === 'move_entity' || name === 'set_entity_data' || name === 'level_event') return;
-
     const packet = {
       name,
       params,
     };
-    const packetJson = JSON.stringify(packet);
+
+    let packetJson
+    try {
+      packetJson = JSON.stringify(packet);
+    } catch (error) {
+      return;
+    }
     const timestamp = Date.now();
     const filename = `${name}_${timestamp}.json`;
-    const filePath = path.join(__dirname, filename);
-    fs.writeFile(filePath, packetJson, err => {
-      if (err) {
-        console.error(err);
-      }
-    });
+    const filePath = path.join(__dirname, "packets", filename);
+
+    fs.writeFileSync(filePath, packetJson);
+    console.log('%o', packetJson)
   });
 });
